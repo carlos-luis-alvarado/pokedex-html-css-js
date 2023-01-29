@@ -1,0 +1,37 @@
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1 rem = 10px */    
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+    background-color: var(--main-blue);
+}
+
+/** Globales **/
+.contenedor {
+    width: min(95%);
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+    font-family: var(--principal-font);
+}
+h1, h2, h3, h4,p {
+    font-family: var(--principal-font);
+    line-height: 1.2;
+}
+
+p{
+    color: var(--blanco);
+    font-size: 700;
+    /* height: 5rem; */
+}
+img {
+    max-width: 100%;
+}

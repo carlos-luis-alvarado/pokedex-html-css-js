@@ -1,0 +1,20 @@
+.card{
+    background-color: bisque;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 1s;
+    width: 19rem;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.card:hover img{
+    transition: all 0.65s;
+    transform: rotateY(360deg);
+}
+

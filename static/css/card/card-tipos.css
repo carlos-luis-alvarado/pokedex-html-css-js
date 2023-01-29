@@ -1,0 +1,11 @@
+.card__tipos{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    
+}
+.card__tipos p{
+    border-radius: .5rem;
+    padding: .5rem;
+    margin: 0;
+}
