@@ -1,0 +1,35 @@
+
+.info-items {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    text-align: center;
+    /* transition: all 0.3s ease-in-out; */
+}
+
+.info-items::before {
+    display: block;
+    content: '';
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -3px;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
+
+.info-items:hover::before {
+    width: 100%;
+    background-color: blue;
+}
+
+.activa::before{
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: -3px;
+    position: absolute;
+    background: blue;
+}

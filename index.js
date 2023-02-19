@@ -3,15 +3,13 @@ import { obtenerInfoPokemon, obtenerPokemons } from "./static/js/getData.js";
 localStorage.removeItem('i')
 
 const main = async () => {
-    let i=(localStorage.getItem('i')==null)?0:localStorage.getItem('i');
-i = Number(i)
-
-
+    let i = (localStorage.getItem('i') == null) ? 0 : localStorage.getItem('i');
+    i = Number(i)
     const url = 'https://pokeapi.co/api/v2/pokemon/';
     let pokemons = await obtenerPokemons(url)
-    pokemons.forEach((pokemon,index) => {
+    pokemons.forEach((pokemon, index) => {
         console.log(pokemon);
-        obtenerInfoPokemon(url, index+1+i,i);
+        obtenerInfoPokemon(url, index + 1 + i, i);
     })
 }
 main();
@@ -22,7 +20,7 @@ main();
 const body = document.querySelector('html')
 
 window.onload = () => {
-    
+
     //Medida de Scroll top , inicial 0
     console.log('scrollTop ' + body.scrollTop);
     //Tamanio de la pagina(todo el contenido)
@@ -42,9 +40,9 @@ window.onload = () => {
 
 }
 
-let enlaces =  document.querySelectorAll('.mas-info')
-enlaces.forEach(enlace=>{
-    enlace.addEventListener('click',e=>{
+let enlaces = document.querySelectorAll('.mas-info')
+enlaces.forEach(enlace => {
+    enlace.addEventListener('click', e => {
         e.preventDefault()
     })
 })

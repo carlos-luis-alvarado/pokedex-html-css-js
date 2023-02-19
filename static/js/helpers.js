@@ -16,9 +16,24 @@ const convertirPesoYAltura = (num) => {
     return num / 10
 }
 
+const convertirPesoEn = (num)=>{
+    return (2.20462*num).toFixed(2);
+}
+const convertirAlturaEn =(num)=>{
+    return (num*3.28084).toFixed(2);
+}
 
+const getAbilities=(abilities)=>{
+    const text =  abilities.map(ability=>{
+        return ability.ability.name
+    })
+    return text.toString().replace(',',' ')
+}
 
 export{
     obtenerTipoPokemon,
-    convertirPesoYAltura
+    convertirPesoYAltura,
+    convertirAlturaEn,
+    convertirPesoEn,
+    getAbilities
 }

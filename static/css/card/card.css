@@ -1,5 +1,6 @@
 .card{
     background-color: bisque;
+    margin: auto;
     padding: 10px;
     border-radius: 10px;
     text-align: center;

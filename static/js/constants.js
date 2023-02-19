@@ -40,3 +40,9 @@ export const coloursBackgrounds = {
     fairy: 'rgba(214, 133, 173,.5)',
 };
 
+const BaseStats = `
+<h1>hola</h1>
+`
+export const content = {
+    "Base Stats":BaseStats
+}

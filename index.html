@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="./static/css/card/card-image.css">
     <link rel="stylesheet" href="./static/css/card/card-tipos.css">
     <link rel="stylesheet" href="./static/css/section-info/section-info.css">
+    <link rel="stylesheet" href="./static/css/info-pokemon/info-pokemon.css">
+    <link rel="stylesheet" href="./static/css/info-items/info-items.css">
+
     <script defer type="module" src="./index.js"></script>
     <title>Pokedex</title>
 </head>
@@ -60,16 +63,27 @@
             <section class="section-info">
                 <div class="info-pokemon">
                     <div class="info-pokemon__fondo">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png">
-                    </div>
-                    <div class="info-pokemon__info">
-                        <ul class="info-pokemon__section">
-                            <li><a class="mas-info" href="">About</a></li>
-                            <li><a class="mas-info" href="">Base Stats</a> </li>
-                            <li><a class="mas-info" href="">Evolution</a></li>
-                            <li><a class="mas-info" href="">Moves</a></li>
-                        </ul>
-                        
+                        <p class="data-name"></p>
+                        <div style="display: flex;">
+                            <p>nose</p>
+                            <p>nose</p>
+                            <p>nose</p>
+                        </div>
+                        <img class="data-img" src="">
+                        </div>
+                            <div class="info-pokemon__info">
+                                <ul class="info-pokemon__items">
+                                    <li><a class="info-items activa" href="">About</a></li>
+                                    <li><a class="info-items" href="">Base Stats</a> </li>
+                                    <li><a class="info-items" href="">Evolution</a></li>
+                                    <li><a class="info-items" href="">Moves</a></li>
+                                </ul>
+
+                                <div id="info-render">
+                                  
+                                </div>
+                            </div>
+                        </div>               
                     </div>
                 </div>
                 
