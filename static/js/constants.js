@@ -39,6 +39,9 @@ export const coloursBackgrounds = {
     steel: 'rgba(183, 183, 206,.5)',
     fairy: 'rgba(214, 133, 173,.5)',
 };
+export const links = {
+    POKEAPI_PAGE  : 'https://pokeapi.co/api/v2/pokemon/'
+}
 
 const BaseStats = `
 <h1>hola</h1>
