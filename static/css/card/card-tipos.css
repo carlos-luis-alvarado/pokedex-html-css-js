@@ -1,11 +1,18 @@
 .card__tipos{
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    
+    width: fit-content;
+    margin: auto;
+    padding: .7rem;
+    border-radius: .5rem;
+    gap: .5rem .5rem;
+}
+.card:hover .card__tipos{
+    /* color: black; */
+    background-color: rgba(255, 255, 255, 0.452);
 }
 .card__tipos p{
     border-radius: .5rem;
-    padding: .5rem;
+    padding: .8rem;
     margin: 0;
 }

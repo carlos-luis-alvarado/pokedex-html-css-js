@@ -10,6 +10,7 @@ const main = async () => {
     pokemons.forEach(async(pokemon, index) => {
         //console.log(pokemon);
         let pokemonData =await obtenerInfoPokemon(index + 1 + i);
+        // const [pokemonData,dataSpecies] = Promise.all([obtenerInfoPokemon(index + 1 + i),renderEvolutions(data.species)])
         insertarCard(pokemonData)
     })
 }
@@ -28,7 +29,7 @@ window.onload = () => {
     //console.log('viewport ' + body.scrollHeight);
     //Tamanio de la pantalla
     console.log('altura doc ' + body.clientHeight)
-    
+    console.log(localStorage.getItem('i'));
     addEventListener('scroll', e => {
         // console.log('scrollTop '+body.scrollTop);
         // console.log('viewport '+body.scrollHeight);

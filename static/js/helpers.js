@@ -1,4 +1,4 @@
-import { colours } from "./constants.js";
+import { colours, coloursBackgrounds } from "./constants.js";
 
 const obtenerTipoPokemon = (tipos) => {
     const divTipo = document.createElement('div');
@@ -23,11 +23,25 @@ const convertirAlturaEn =(num)=>{
     return (num*3.28084).toFixed(2);
 }
 
-
+const evoluesToRecursing = (cadenaDeEvolucion,arreglo)=>{
+    //console.log(cadenaDeEvolucion);
+    for(const e in cadenaDeEvolucion){
+        //console.log(e);
+        if((e == 'evolves_to')&&(cadenaDeEvolucion[e].length==1)){
+            //console.log('123');
+            evoluesToRecursing(cadenaDeEvolucion[e][0],arreglo)
+        }
+        if(e=='species'){
+            arreglo.unshift(cadenaDeEvolucion[e].name)
+            return arreglo
+        }
+    }
+}
 
 export{
     obtenerTipoPokemon,
     convertirPesoYAltura,
     convertirAlturaEn,
-    convertirPesoEn
+    convertirPesoEn,
+    evoluesToRecursing
 }

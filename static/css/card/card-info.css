@@ -1,3 +1,16 @@
 .card__info{
     /* color: white; */
+    /* background-image: url(../../img/cinema\ \(1\).png); */
+    background-repeat: no-repeat;
+    background-size: 10rem;
+    background-position: right bottom;
+}
+
+.card__info h4{
+    color: #f8bc17;
+    font-size: 20px;
+    letter-spacing: .2rem;
+}
+.card__info p{
+    /* color: #fff; */
 }

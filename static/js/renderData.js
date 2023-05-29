@@ -1,63 +1,18 @@
-import { coloursBackgrounds, content } from "./constants.js";
+import { colours, coloursBackgrounds, content } from "./constants.js";
 import { convertirPesoYAltura, obtenerTipoPokemon ,convertirAlturaEn,convertirPesoEn } from "./helpers.js";
-import { getAbilities, obtenerInfoPokemon } from "./getData.js";
+import { getAbilities, getEvolutions } from "./getData.js";
 const section_pokemons = document.querySelector('.section-pokemons');
 const infoPokemon = document.querySelector('.section-info');
 
-const evoluesToRecursing = (cadenaDeEvolucion,arreglo)=>{
-    //console.log(cadenaDeEvolucion);
-    for(const e in cadenaDeEvolucion){
-        //console.log(e);
-        if((e == 'evolves_to')&&(cadenaDeEvolucion[e].length==1)){
-            //console.log('123');
-            evoluesToRecursing(cadenaDeEvolucion[e][0],arreglo)
-        }
-        if(e=='species'){
-            arreglo.unshift(cadenaDeEvolucion[e].name)
-            return arreglo
-        }
-    }
-}
-
-const getEvolutions=async(species)=>{
-    //console.log(species);
-    const cadena = await fetch(species.url)
-        .then(e=>e.json());
-    
-    const cadenaEvolucion = await fetch(cadena.evolution_chain.url)
-        .then(e=>e.json());
-    //console.log(cadenaEvolucion.chain);
-    // console.log('--',evoluesToRecursing(cadenaEvolucion.chain,[]));
-    const evoluciones = evoluesToRecursing(cadenaEvolucion.chain,[]);
-    const dataEvolutions = []
-    for (let i = 0; i < evoluciones.length; i++) {
-        let a = await obtenerInfoPokemon(evoluciones[i])
-        dataEvolutions.push(a)
-    }
-    return dataEvolutions;
-    
-}
-
-const renderEvolutions =async (species)=>{
-    let evoluciones =await getEvolutions(species);
-    console.log(evoluciones);
+const renderEvolutions =(s)=>{
+    // let evoluciones =await getEvolutions(species);
     let etiquetas = ''
-    for (let i = 0; i < evoluciones.length; i++) {
-        const img = `<img src="${evoluciones[i].sprites.front_default}">`
+    for (let i = 0; i < s.length; i++) {
+        const img = `<img src="${s[i].sprites.front_default}">`
         etiquetas+=img
     }
-    console.log(etiquetas);
-    return etiquetas
- 
-    //console.log(dataEvolutions);
-    
-    // const e = await getEvolutions(species)
-    // console.log(e);
-    //const evoluciones =await getEvolutions(species);
-    // Promise.all(evoluciones).then(values=>{
-    //      console.log(values);
-    // })
-
+    // console.log(etiquetas);
+    return etiquetas;
 }
 
 const renderStats=(stats)=>{
@@ -92,23 +47,15 @@ const renderInfo = (data) =>{
     </ul>`
 }
 
-const eventoSeleccionarCard = (data) => {
+const eventoSeleccionarCard = (data,species) => {
     
-    const info_pokemon = document.querySelector('.info-pokemon')
-    //info_pokemon.innerHTML = div;
-    info_pokemon.style.background=coloursBackgrounds[data.types[0].type.name]
-    const data_name = document.querySelector('.data-name');
-    const data_img = document.querySelector('.data-img');
-    data_name.innerHTML = data.name;
-    data_img.src = data.sprites.other.home.front_default;
     const arreglo = document.querySelectorAll('.info-items');
     const infoRender = document.querySelector('#info-render');
-    infoRender.innerHTML = renderInfo(data)
-    
    
     const activa = document.querySelector('.activa')
     activa.classList.remove('activa')
     arreglo[0].classList.add('activa')
+    // let evolutionRender = renderEvolutions(data.species);
     
     //activa.classList.remove('activa')
     arreglo.forEach((element,idx)=>{
@@ -132,38 +79,63 @@ const eventoSeleccionarCard = (data) => {
                     `
                 break;
                 case "Evolution":
+                    let s = await species;
+                    let r = renderEvolutions(s)
                     infoRender.innerHTML= `<h2>Evolution</h2>
-                    ${await renderEvolutions(data.species)}
+                    ${r}
                     `
-                    
                 break;
                 case "Moves":
                     infoRender.innerHTML= `<h2>Moves</h2>`
+                    // console.log(data.moves)
+                    let arr = []
+                    data.moves.forEach(move =>{
+                        if(!arr.includes(move.move.name)){
+                            arr.push(move.move.name)
+                        }
+                    });
+                    console.log(arr);
                 break;
             }
         })
     });
 }
+const renderInfoPokemon =(data)=>{
+    const info_pokemon = document.querySelector('.info-pokemon')
+    //info_pokemon.innerHTML = div;
+    info_pokemon.style.background=coloursBackgrounds[data.types[0].type.name]
+    const data_name = document.querySelector('.data-name');
+    const data_img = document.querySelector('.data-img');
+    data_name.innerHTML = data.name;
+    data_img.src = data.sprites.other.dream_world.front_default;
+    const infoRender = document.querySelector('#info-render');
+    infoRender.innerHTML = renderInfo(data);
+}
 const insertarCard = (data) => {
     let div = `
-            <div class="card__image">
-                <img src=${data.sprites.front_default}>
-            </div>
-            <div class="card__info">
-                <h4>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h4>
-                <p>Height : ${convertirPesoYAltura(data.height)} m</p>
-                <p>Weight : ${convertirPesoYAltura(data.weight)} Kg</p>
-                <p>Type</p>
-                ${obtenerTipoPokemon(data.types)}
+            <div class="card__fondo">
+                <div class="card__image">
+                    <img src=${data.sprites.front_default}>
+                </div>
+                <div class="card__info">
+                    <h4>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h4>
+                    <p>Height : ${convertirPesoYAltura(data.height)} m</p>
+                    <p>Weight : ${convertirPesoYAltura(data.weight)} Kg</p>
+                    <p>Type</p>
+                    ${obtenerTipoPokemon(data.types)}
+                </div>
             </div>
     `
     const divCard = document.createElement('div');
-    divCard.style.background = coloursBackgrounds[data.types[0].type.name]
+    divCard.style.background = colours[data.types[0].type.name]
     divCard.classList.add("card")
-    divCard.innerHTML = div
-    divCard.addEventListener('click', (e) => {
+    divCard.innerHTML = div;
+    let species = getEvolutions(data.species);
+    
+    divCard.addEventListener('click',async(e) => {
         e.preventDefault();
-        eventoSeleccionarCard(data)
+        renderInfoPokemon(data);
+        eventoSeleccionarCard(data,species);
     })
     section_pokemons.appendChild(divCard);
     let i = Number(localStorage.getItem('i'))

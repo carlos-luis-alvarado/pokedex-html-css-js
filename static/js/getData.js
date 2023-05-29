@@ -1,5 +1,5 @@
 import { links } from "./constants.js";
-import { insertarCard } from "./renderData.js";
+import { evoluesToRecursing } from "./helpers.js";
 
 const obtenerInfoPokemon = async (pokemon) => {
     let data = await fetch(links.POKEAPI_PAGE + pokemon)
@@ -14,10 +14,9 @@ const obtenerInfoPokemon = async (pokemon) => {
 }
 
 const obtenerPokemons = async () => {
-    let data =  await fetch(links.POKEAPI_PAGE)
-        .then(data => data.json())
-        .then(pokemons => pokemons.results)
-    return data
+    let data =  await fetch(links.POKEAPI_PAGE);
+    let pokemons = await data.json();
+    return pokemons.results;
 }
 const getAbilities=(abilities)=>{
     const text =  abilities.map(ability=>{
@@ -25,10 +24,28 @@ const getAbilities=(abilities)=>{
     })
     return text.toString().replace(',',' ')
 }
-
+const getEvolutions=async(species)=>{
+    //console.log(species);
+    const cadena = await fetch(species.url)
+        .then(e=>e.json());
+    
+    const cadenaEvolucion = await fetch(cadena.evolution_chain.url)
+        .then(e=>e.json());
+    //console.log(cadenaEvolucion.chain);
+    // console.log('--',evoluesToRecursing(cadenaEvolucion.chain,[]));
+    const evoluciones = evoluesToRecursing(cadenaEvolucion.chain,[]);
+    const dataEvolutions = []
+    for (let i = 0; i < evoluciones.length; i++) {
+        let a = await obtenerInfoPokemon(evoluciones[i])
+        dataEvolutions.push(a)
+    }
+    return dataEvolutions;
+    
+}
 
 export  {
     obtenerInfoPokemon,
     obtenerPokemons,
-    getAbilities
+    getAbilities,
+    getEvolutions
 }
