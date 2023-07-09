@@ -4,6 +4,8 @@
     display: block;
     position: relative;
     text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px  #0ff;
     /* transition: all 0.3s ease-in-out; */
 }
 

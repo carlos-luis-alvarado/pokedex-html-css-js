@@ -1,7 +1,10 @@
 .section-info {
-    position: relative;
-    width: 25%;
+    /* position: relative; */
     /* margin: auto; */
-    height: 100vh;
-}
+    /* position: inherit; */
+    /* height: 100vh; */
+    flex-grow: 1;
+    min-width: 10rem;
+    /* flex-shrink: 3; */
 
+}

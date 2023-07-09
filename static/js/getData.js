@@ -1,9 +1,12 @@
 import { links } from "./constants.js";
 import { evoluesToRecursing } from "./helpers.js";
 
-const obtenerInfoPokemon = async (pokemon) => {
+const obtenerInfoPokemon = async (pokemon='') => {
     let data = await fetch(links.POKEAPI_PAGE + pokemon)
     let pokemonData = await data.json();
+    if(pokemon===''){
+        return pokemonData.results;
+    }
     //console.log(pokemonData);
     //console.log(pokemonData)
     // insertarCard(pokemonData)
@@ -45,7 +48,7 @@ const getEvolutions=async(species)=>{
 
 export  {
     obtenerInfoPokemon,
-    obtenerPokemons,
+    // obtenerPokemons,
     getAbilities,
     getEvolutions
 }

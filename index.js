@@ -1,4 +1,4 @@
-import { obtenerInfoPokemon, obtenerPokemons } from "./static/js/getData.js";
+import { obtenerInfoPokemon } from "./static/js/getData.js";
 import { insertarCard } from "./static/js/renderData.js";
 
 localStorage.removeItem('i')
@@ -6,7 +6,7 @@ localStorage.removeItem('i')
 const main = async () => {
     let i = (localStorage.getItem('i') == null) ? 0 : localStorage.getItem('i');
     i = Number(i)
-    let pokemons = await obtenerPokemons()
+    let pokemons = await obtenerInfoPokemon();
     pokemons.forEach(async(pokemon, index) => {
         //console.log(pokemon);
         let pokemonData =await obtenerInfoPokemon(index + 1 + i);
