@@ -3,8 +3,7 @@
     /* margin: auto; */
     /* position: inherit; */
     /* height: 100vh; */
-    flex-grow: 1;
-    min-width: 10rem;
+    display: flex;
     /* flex-shrink: 3; */
-
+    /* transition: all 1s; */
 }

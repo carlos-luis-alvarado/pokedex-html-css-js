@@ -171,15 +171,16 @@ const renderInfoPokemon = async (data, info) => {
     let ifo = await info;
     const info_pokemon = document.querySelector('.info-pokemon')
     //info_pokemon.innerHTML = div;
-    info_pokemon.style.background = coloursBackgrounds[data.types[0].type.name]
+    info_pokemon.style.background = coloursBackgrounds[data.types[0].type.name];
     // background: rgb(238, 174, 202);
-    info_pokemon.style.background = `radial-gradient(circle,#fff  0%, ${colours[data.types[0].type.name]} 70%)`
+    info_pokemon.style.background = `radial-gradient(circle,#ffffffF7 0%, ${colours[data.types[0].type.name]} 60%,#444 100%)`
     const data_name = document.querySelector('.data-name');
     const data_img = document.querySelector('.data-img');
     data_name.innerHTML = data.name;
     data_img.src = data.sprites.other.dream_world.front_default;
     const infoRender = document.querySelector('#info-render');
     infoRender.innerHTML = renderInfo(data, ifo);
+
 }
 const insertarCard = (data) => {
     let div = `
@@ -205,6 +206,10 @@ const insertarCard = (data) => {
 
     divCard.addEventListener('click', (e) => {
         e.preventDefault();
+        const sectionInfoLoading = document.querySelector('.section-info-loading');
+        const sectionInfo = document.querySelector('.info-pokemon');
+        sectionInfoLoading.style.display = 'none';
+        sectionInfo.style.display = 'inherit';
         renderInfoPokemon(data, infoSpecies);
         eventoSeleccionarCard(data, species, infoSpecies);
     })

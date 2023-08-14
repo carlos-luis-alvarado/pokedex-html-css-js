@@ -1,9 +1,10 @@
-.section-pokemons{
+.section-pokemons {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     flex-wrap: wrap;
     gap: 2rem;
+    width: calc(98% - 30rem);
     /* margin: 0; */
-    flex-grow: 3;
+    /* flex-grow: 1; */
     /* flex-shrink: 1; */
 }

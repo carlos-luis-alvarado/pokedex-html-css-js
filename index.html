@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="./static/css/card/card-image.css">
     <link rel="stylesheet" href="./static/css/card/card-tipos.css">
     <link rel="stylesheet" href="./static/css/section-info/section-info.css">
+    <link rel="stylesheet" href="./static/css/section-info/section-info-loading.css">
     <link rel="stylesheet" href="./static/css/info-pokemon/info-pokemon.css">
     <link rel="stylesheet" href="./static/css/info-items/info-items.css">
     <link rel="stylesheet" href="./static/css/info-items/info-stats.css">
@@ -24,6 +26,7 @@
     <script defer type="module" src="./index.js"></script>
     <title>Pokedex</title>
 </head>
+
 <body>
     <!-- <img src="./static/img/iconos-types/Tipo_acero_icono_EP.svg" alt=""> -->
     <nav class="">
@@ -61,11 +64,20 @@
     <main class="contenedor">
         <div class="main">
             <section class="section-pokemons">
-           
+
             </section>
-            
-    
+
+
             <section class="section-info">
+                <div class="section-info-loading">
+                    <h2>
+                        Welcome to <span>Pokedex</span>
+                    </h2>
+                    <figure>
+                        <img src="./static/img/ash.png" alt="pokeball">
+                    </figure>
+                    <h3>Select your pokemon</h3>
+                </div>
                 <div class="info-pokemon">
                     <div class="info-pokemon__fondo">
                         <p class="data-name"></p>
@@ -75,24 +87,22 @@
                             <p>nose</p>
                         </div>
                         <img class="data-img" src="">
-                        </div>
-                            <div class="info-pokemon__info">
-                                <ul class="info-pokemon__items">
-                                    <li><a class="info-items activa" href="">About</a></li>
-                                    <li><a class="info-items" href="">Base Stats</a> </li>
-                                    <li><a class="info-items" href="">Evolution</a></li>
-                                    <li><a class="info-items" href="">Moves</a></li>
-                                </ul>
+                    </div>
+                    <div class="info-pokemon__info">
+                        <ul class="info-pokemon__items">
+                            <li><a class="info-items activa" href="">About</a></li>
+                            <li><a class="info-items" href="">Base Stats</a> </li>
+                            <li><a class="info-items" href="">Evolution</a></li>
+                            <li><a class="info-items" href="">Moves</a></li>
+                        </ul>
 
-                                <div id="info-render">
-                                  
-                                </div>
-                            </div>
-                        </div>               
+                        <div id="info-render">
+
+                        </div>
                     </div>
                 </div>
-                
-            </section>
+        </div>
+        </section>
         </div>
 
     </main>
@@ -101,4 +111,5 @@
 
     </p>
 </body>
+
 </html>
